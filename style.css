@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #000000;
+}
+
+body.dark-mode {
+    --bg-color: #000000;
+    --text-color: #f5f5f5;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Arial Black', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navbars */
+#nav-top, #nav-bottom {
+    position: fixed;
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#nav-top { top: 0; }
+#nav-bottom { bottom: 0; }
+
+.dynamic {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-top-ele {
+    cursor: pointer;
+}
+
+/* Main Canvas Section */
+#section-1 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.front-page {
+    z-index: 1;
+    position: relative;
+    pointer-events: none; /* Allows mouse events to pass through text cleanly */
+}
+
+/* Line & Word Display */
+.text-line {
+    display: flex;
+    gap: 25px;
+    overflow: hidden;
+}
+
+.text-word {
+    display: flex;
+}
+
+.word-letter {
+    font-size: 8vw;
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    pointer-events: auto;
+}
+
+.word-letter:hover {
+    transform: translateY(-10px);
+}
+
+/* Following Cursor Box */
+.cursor-box {
+    width: 180px;
+    height: 240px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none; /* Prevents cursor from flickering/stuck state */
+    transform: translate(10%, 20%); /* Centers box around the mouse pointer */
+    /* Add/Update this line inside .cursor-box in style.css: */
+    transition: left 0.5s ease-out, top 0.5s ease-out, opacity 0.3s ease;
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.hero-vid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    display: block;
+}
