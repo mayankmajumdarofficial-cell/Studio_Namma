@@ -67,3 +67,37 @@ if (heroVid) {
         console.log("Autoplay waiting for interaction:", err);
     });
 }
+
+const menu = document.querySelector(".menu");
+const menuBox = document.querySelector(".menu-box");
+
+let isOpen = false; // State tracker
+
+if (menu) {
+    // Hover in
+    menu.addEventListener("mouseover", () => {
+        if (!isOpen) {
+            menu.textContent = "OPEN";
+        }
+    });
+
+    // Toggle click
+    menu.addEventListener("click", () => {
+        isOpen = !isOpen; // Toggle state
+
+        if (isOpen) {
+            menu.textContent = "CLOSE";
+            if (menuBox) menuBox.style.top = "0%";
+        } else {
+            menu.textContent = "OPEN";
+            if (menuBox) menuBox.style.top = "-100%"; // Slide back up
+        }
+    });
+
+    // Hover out
+    menu.addEventListener("mouseleave", () => {
+        if (!isOpen) {
+            menu.textContent = "MENU";
+        }
+    });
+}
