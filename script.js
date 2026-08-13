@@ -101,3 +101,7 @@ if (menu) {
         }
     });
 }
+
+//Show gif on mouse enter
+const menuItem = document.getElementsByClassName("menu-nav-link");
+

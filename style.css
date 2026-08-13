@@ -120,13 +120,12 @@ body {
     display: block;
 }
 .menu-box{
-    background-color:rgb(255, 255, 255);
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
     grid-column-gap: 2rem;
   grid-row-gap: 2rem;
   flex-flow: column;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-columns: 1fr;
   justify-content: center;
   place-items: center stretch;
   width: 100%;
@@ -134,10 +133,63 @@ body {
   padding-top: 5rem;
   padding-bottom: 5rem;
   display: grid;
-  position: absolute;
-  z-index: 100;
-  top:-100% ;
 }
-.menu-box{
-    position-top: relative;
+.menu-box {
+    position: absolute;
+    top: -100%; /* Start offscreen */
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    transition: top 0.6s cubic-bezier(0.77, 0, 0.175, 1); /* Smooth slide */
+    z-index: 999;
+}
+
+.menu-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+    position: relative;
+}
+.menu-col{
+    display: inline;
+    row-gap: 20px;
+}
+.menu-nav-link img{
+    width: 0px;
+    border-radius: 15px;
+     object-fit: cover;
+    flex-shrink: 0;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: width 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                height 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                border-radius 0.45s ease,
+                box-shadow 0.3s ease,
+                opacity 0.3s ease,
+                transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.menu-nav-link:hover img {
+    width: 220px;
+    height: 140px;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menu-nav-link h1 {
+    font-size: clamp(56px, 9vw, 130px);
+    font-family: var(--font-impact);
+    font-weight: 400;
+    line-height: 1.05;
+    opacity: 1;
+    transition: transform 0.7s var(--ease-out-expo), opacity 0.7s ease;
+    cursor: none;
+    text-transform: uppercase;
 }
